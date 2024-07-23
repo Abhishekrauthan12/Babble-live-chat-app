@@ -4,8 +4,8 @@
   "description": "\"This is a node server for my web chat app\"",
   "main": "index.js",
  "scripts": {
-   "build":"npm install",
-  "start": "nodemon index.js"
+  "start": "node index.js",
+    "dev": "nodemon index.js"
 }
 ,
   "author": "\"abhishek\"",
