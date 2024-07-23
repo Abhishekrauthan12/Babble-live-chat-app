@@ -1,3 +1,25 @@
+const express = require('express');
+const http = require('http');
+const socketIo = require('socket.io');
+
+const app = express();
+const server = http.createServer(app);
+const io = socketIo(server, {
+    cors: {
+        origin: "*", // Allow all origins (adjust as needed)
+        methods: ["GET", "POST"]
+    }
+});
+
+// Your Socket.io code here...
+
+const PORT = process.env.PORT || 8000; // Use the PORT environment variable or default to 8000
+
+server.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
+// <----->
 const io = require('socket.io')(8000, {cors: {origin: "*"}});
 
 const users = {};
@@ -19,4 +41,12 @@ const users = {};
 
     });
 
+});
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+const PORT = process.env.PORT || 8000;
+
+server.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
